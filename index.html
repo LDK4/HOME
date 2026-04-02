@@ -2,17 +2,16 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="SEU_CODIGO_AQUI" />
+    <meta name="google-site-verification" content="7PFyy7VogxV_gE1SaHBg6twgJYE2jqzKk-EpsRh2hlI" />
     
-    <title>Sua Home</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando...</title>
+    <title>HOME | Redirecionamento</title>
+    
     <style>
         /* Estilos globais - Tema Escuro */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0e11; /* Preto fosco da Binance */
+            background-color: #0b0e11; /* Preto Binance */
             color: #eaecef;
             text-align: center;
             margin: 0;
@@ -26,7 +25,7 @@
 
         /* Container principal */
         .container {
-            background-color: #1e2329; /* Cinza muito escuro */
+            background-color: #1e2329; /* Cinza Escuro */
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
@@ -43,20 +42,20 @@
 
         p {
             font-size: 16px;
-            color: #b7bdc6; /* Texto secundário acinzentado */
+            color: #b7bdc6;
             line-height: 1.6;
         }
 
         .highlight {
             font-weight: bold;
-            color: #f3ba2f; /* Amarelo vibrante */
+            color: #f3ba2f; /* Amarelo Binance */
             font-size: 48px;
             display: block;
             margin: 25px 0;
             text-shadow: 0 0 15px rgba(243, 186, 47, 0.3);
         }
 
-        /* Botão de fallback */
+        /* Botão */
         .btn {
             display: inline-block;
             margin-top: 25px;
@@ -67,6 +66,7 @@
             font-weight: 600;
             border-radius: 8px;
             transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .btn:hover {
@@ -74,35 +74,29 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(243, 186, 47, 0.4);
         }
-
-        /* Animação suave para o contador */
-        #contador {
-            transition: all 0.2s;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Redirecionando</h1>
-        <p>Aguarde um instante. Estamos conectando você ao <strong>MVP Binance</strong>.</p>
+        <h1>Conectando...</h1>
+        <p>Você está na página principal. Aguarde o redirecionamento automático para o <strong>MVP Binance</strong>.</p>
         
         <div id="countdown-container">
             <span id="contador" class="highlight">5</span>
         </div>
 
-        <p>Se o redirecionamento falhar, use o botão:</p>
-        <a href="https://ldk4.github.io/MVPbinance/" id="link-manual" class="btn">ACESSAR AGORA</a>
+        <p>Se não quiser esperar, clique abaixo:</p>
+        <a href="https://ldk4.github.io/MVPbinance/" id="link-manual" class="btn">Acessar MVP Agora</a>
     </div>
 
     <script>
-        // Configurações
+        // Configurações de Redirecionamento
         let tempoRestante = 5; 
         const urlDestino = "https://ldk4.github.io/MVPbinance/"; 
         
         const elementoContador = document.getElementById('contador');
 
-        // Lógica da contagem regressiva
         const contagem = setInterval(() => {
             tempoRestante--;
             
