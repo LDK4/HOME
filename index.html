@@ -63,12 +63,56 @@
             font-weight: 600;
             border-radius: 8px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
             background-color: #ffca42;
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(243, 186, 47, 0.4);
+        }
+
+        /* --- SEÇÃO DE DOAÇÃO PIX --- */
+        .pix-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .pix-title {
+            font-size: 14px;
+            color: #f3ba2f;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .pix-box {
+            background: #2b3139;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            word-break: break-all;
+            transition: background 0.2s;
+            border: 1px dashed #474d57;
+            color: #eaecef;
+            margin-top: 10px;
+        }
+
+        .pix-box:hover {
+            background: #363d47;
+            border-color: #f3ba2f;
+        }
+
+        #copy-status {
+            font-size: 12px;
+            color: #02c076; /* Verde de sucesso da Binance */
+            margin-top: 8px;
+            display: none;
+            font-weight: bold;
         }
 
         /* Animação suave para o contador */
@@ -89,10 +133,19 @@
 
         <p>Se o redirecionamento falhar, use o botão:</p>
         <a href="https://ldk4.github.io/MVPbinance/" id="link-manual" class="btn">ACESSAR AGORA</a>
+
+        <div class="pix-section">
+            <div class="pix-title">Apoie o Desenvolvedor ☕</div>
+            <p style="font-size: 13px; margin-bottom: 5px;">Gostou do projeto? Contribua via Pix:</p>
+            <div class="pix-box" onclick="copyPix()" title="Clique para copiar a chave">
+                <span id="pix-key">desouzanunes10o@gmail.com</span>
+            </div>
+            <div id="copy-status">✓ Chave Pix copiada!</div>
+        </div>
     </div>
 
     <script>
-        // Configurações
+        // Configurações de Redirecionamento
         let tempoRestante = 5; 
         const urlDestino = "https://ldk4.github.io/MVPbinance/"; 
         
@@ -111,6 +164,22 @@
                 window.location.href = urlDestino;
             }
         }, 1000);
+
+        // Função para copiar a chave Pix automaticamente
+        function copyPix() {
+            const pixText = document.getElementById('pix-key').innerText;
+            navigator.clipboard.writeText(pixText).then(() => {
+                const status = document.getElementById('copy-status');
+                status.style.display = 'block';
+                
+                // Esconde a mensagem de sucesso após 3 segundos
+                setTimeout(() => { 
+                    status.style.display = 'none'; 
+                }, 3000);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
     </script>
 
 </body>
