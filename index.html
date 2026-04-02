@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionando...</title>
     <style>
-        /* Estilos globais - Tema Escuro */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0e11; /* Preto fosco da Binance */
+            background-color: #0b0e11; 
             color: #eaecef;
             text-align: center;
             margin: 0;
@@ -20,9 +19,8 @@
             min-height: 100vh;
         }
 
-        /* Container principal */
         .container {
-            background-color: #1e2329; /* Cinza muito escuro */
+            background-color: #1e2329; 
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
@@ -31,62 +29,40 @@
             border: 1px solid #333;
         }
 
-        h1 {
-            color: #ffffff;
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 16px;
-            color: #b7bdc6; /* Texto secundário acinzentado */
-            line-height: 1.6;
-        }
+        h1 { color: #ffffff; font-size: 26px; margin-bottom: 15px; }
 
         .highlight {
             font-weight: bold;
-            color: #f3ba2f; /* Amarelo vibrante */
+            color: #f3ba2f; 
             font-size: 48px;
             display: block;
-            margin: 25px 0;
-            text-shadow: 0 0 15px rgba(243, 186, 47, 0.3);
+            margin: 20px 0;
         }
 
-        /* Botão de fallback */
         .btn {
             display: inline-block;
-            margin-top: 25px;
+            margin-top: 20px;
             padding: 15px 30px;
             background-color: #f3ba2f;
             color: #000;
             text-decoration: none;
             font-weight: 600;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             cursor: pointer;
             border: none;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .btn:hover {
-            background-color: #ffca42;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(243, 186, 47, 0.4);
-        }
+        .btn:hover { background-color: #ffca42; transform: scale(1.02); }
 
-        /* --- SEÇÃO DE DOAÇÃO PIX --- */
+        /* SEÇÃO PIX VISÍVEL */
         .pix-section {
-            margin-top: 40px;
+            margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #333;
-        }
-
-        .pix-title {
-            font-size: 14px;
-            color: #f3ba2f;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
+            display: block !important; /* Força a exibição */
         }
 
         .pix-box {
@@ -95,92 +71,63 @@
             border-radius: 8px;
             font-size: 14px;
             cursor: pointer;
-            word-break: break-all;
-            transition: background 0.2s;
-            border: 1px dashed #474d57;
-            color: #eaecef;
+            border: 1px dashed #f3ba2f;
+            color: #f3ba2f;
             margin-top: 10px;
-        }
-
-        .pix-box:hover {
-            background: #363d47;
-            border-color: #f3ba2f;
+            word-wrap: break-word;
         }
 
         #copy-status {
             font-size: 12px;
-            color: #02c076; /* Verde de sucesso da Binance */
+            color: #02c076;
             margin-top: 8px;
             display: none;
-            font-weight: bold;
-        }
-
-        /* Animação suave para o contador */
-        #contador {
-            transition: all 0.2s;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Redirecionando</h1>
-        <p>Aguarde um instante. Estamos conectando você ao <strong>MVP Binance</strong>.</p>
+        <h1>Conectando...</h1>
+        <p>Você será redirecionado para o <strong>MVP Binance</strong> em:</p>
         
-        <div id="countdown-container">
-            <span id="contador" class="highlight">5</span>
-        </div>
+        <span id="contador" class="highlight">10</span>
 
-        <p>Se o redirecionamento falhar, use o botão:</p>
-        <a href="https://ldk4.github.io/MVPbinance/" id="link-manual" class="btn">ACESSAR AGORA</a>
+        <a href="https://ldk4.github.io/MVPbinance/" class="btn">ACESSAR AGORA</a>
 
         <div class="pix-section">
-            <div class="pix-title">Apoie o Desenvolvedor ☕</div>
-            <p style="font-size: 13px; margin-bottom: 5px;">Gostou do projeto? Contribua via Pix:</p>
-            <div class="pix-box" onclick="copyPix()" title="Clique para copiar a chave">
+            <p style="font-size: 14px; color: #ffffff; margin-bottom: 5px;">Apoie o desenvolvedor ☕</p>
+            <p style="font-size: 12px; color: #b7bdc6;">Clique na chave abaixo para copiar:</p>
+            <div class="pix-box" onclick="copyPix()">
                 <span id="pix-key">desouzanunes10o@gmail.com</span>
             </div>
-            <div id="copy-status">✓ Chave Pix copiada!</div>
+            <div id="copy-status">✓ Chave Pix copiada com sucesso!</div>
         </div>
     </div>
 
     <script>
-        // Configurações de Redirecionamento
-        let tempoRestante = 5; 
-        const urlDestino = "https://ldk4.github.io/MVPbinance/"; 
-        
-        const elementoContador = document.getElementById('contador');
+        let tempo = 10; 
+        const url = "https://ldk4.github.io/MVPbinance/";
+        const elContador = document.getElementById('contador');
 
-        // Lógica da contagem regressiva
-        const contagem = setInterval(() => {
-            tempoRestante--;
-            
-            if (tempoRestante >= 0) {
-                elementoContador.textContent = tempoRestante;
-            }
-
-            if (tempoRestante <= 0) {
-                clearInterval(contagem);
-                window.location.href = urlDestino;
+        const timer = setInterval(() => {
+            tempo--;
+            elContador.textContent = tempo;
+            if (tempo <= 0) {
+                clearInterval(timer);
+                window.location.href = url;
             }
         }, 1000);
 
-        // Função para copiar a chave Pix automaticamente
         function copyPix() {
-            const pixText = document.getElementById('pix-key').innerText;
-            navigator.clipboard.writeText(pixText).then(() => {
-                const status = document.getElementById('copy-status');
-                status.style.display = 'block';
-                
-                // Esconde a mensagem de sucesso após 3 segundos
-                setTimeout(() => { 
-                    status.style.display = 'none'; 
-                }, 3000);
-            }).catch(err => {
-                console.error('Erro ao copiar: ', err);
+            const text = document.getElementById('pix-key').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                document.getElementById('copy-status').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('copy-status').style.display = 'none';
+                }, 2500);
             });
         }
     </script>
-
 </body>
 </html>
